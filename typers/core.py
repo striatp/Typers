@@ -1,6 +1,15 @@
 from .Exceptions.validate_error import ValidateError
 
 class Valid:
+    # Not none
+    @staticmethod
+    def _not_none(value, name: str = None):
+        if name is None:
+            raise ValidateError("The 'name' argument must be a string.")
+        if value is None:
+            raise ValueError(f"The '{name}' argument cannot be None.")
+
+    # String
     @staticmethod
     def _string(value, name: str = None):
         if name == None:
@@ -125,3 +134,12 @@ class Valid:
         if not isinstance(value, list) or not all(isinstance(item, bool) for item in value):
             raise ValueError(f"The '{name}' argument must be a list of booleans.")
     
+    # Ranges
+    @staticmethod
+    def _in_range(value, min_val, max_val, name: str = None):
+        if min_val >= max_val:
+            raise ValidateError("The 'min_val' argument cannot be bigger or equal to the 'max_val' argument.")
+        if name is None:
+            raise ValidateError("The 'name' argument must be a string.")
+        if not isinstance(value, (int, float)) or not (min_val <= value <= max_val):
+            raise ValueError(f"The '{name}' argument must be between {min_val} and {max_val}.")
