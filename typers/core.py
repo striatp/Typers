@@ -89,6 +89,7 @@ class Valid:
         if not isinstance(value, bool):
             raise ValueError(f"The '{name}' argument must be a boolean.")
 
+    # Lists
     @staticmethod
     def _list(value, name: str = None):
         if name is None:
@@ -102,4 +103,25 @@ class Valid:
             raise ValidateError("The 'name' argument must be a string.")
         if not isinstance(value, list) or not all(isinstance(item, str) for item in value):
             raise ValueError(f"The '{name}' argument must be a list of strings.")
+    
+    @staticmethod
+    def _list_of_ints(value, name: str = None):
+        if name is None:
+            raise ValidateError("The 'name' argument must be a string.")
+        if not isinstance(value, list) or not all(isinstance(item, int) for item in value):
+            raise ValueError(f"The '{name}' argument must be a list of integers.")
+
+    @staticmethod
+    def _list_of_floats(value, name: str = None):
+        if name is None:
+            raise ValidateError("The 'name' argument must be a string.")
+        if not isinstance(value, list) or not all(isinstance(item, float) for item in value):
+            raise ValueError(f"The '{name}' argument must be a list of floats.")
+
+    @staticmethod
+    def _list_of_bools(value, name: str = None):
+        if name is None:
+            raise ValidateError("The 'name' argument must be a string.")
+        if not isinstance(value, list) or not all(isinstance(item, bool) for item in value):
+            raise ValueError(f"The '{name}' argument must be a list of booleans.")
     
