@@ -5,6 +5,16 @@ class Valid:
     # Not none
     @staticmethod
     def _not_none(value, name: str = None):
+        """Validate that the given value is not None.
+
+        Args:
+            value: The value to check.
+            name: The name of the argument (for error messages).
+
+        Raises:
+            ValueError: If the value is None.
+            ValidateError: If the name is None.
+        """
         if name is None:
             raise ValidateError("The 'name' argument must be a string.")
         if value is None:
@@ -13,6 +23,16 @@ class Valid:
     # String
     @staticmethod
     def _string(value, name: str = None):
+        """Validate that the given value is a string.
+
+        Args:
+            value: The value to check.
+            name: The name of the argument (for error messages).
+
+        Raises:
+            ValueError: If the value is not a string.
+            ValidateError: If the name is None.
+        """
         if name == None:
             raise ValidateError("The 'name' argument must be a string : preferably the name of the relative function.")
         if not isinstance(value, str):
@@ -21,6 +41,16 @@ class Valid:
     # Integers
     @staticmethod
     def _integer(value, name: str = None):
+        """Validate that the given value is an integer.
+
+        Args:
+            value: The value to check.
+            name: The name of the argument (for error messages).
+
+        Raises:
+            ValueError: If the value is not an integer.
+            ValidateError: If the name is None.
+        """
         if name == None:
             raise ValidateError("The 'name' argument must be a string : preferably the name of the relative function.")
         if not isinstance(value, int):
@@ -28,6 +58,16 @@ class Valid:
 
     @staticmethod
     def _positive_int_in(value, name: str = None):
+        """Validate that the given value is a positive integer (greater than zero).
+
+        Args:
+            value: The value to check.
+            name: The name of the argument (for error messages).
+
+        Raises:
+            ValueError: If the value is not a positive integer.
+            ValidateError: If the name is None.
+        """
         if name == None:
             raise ValidateError("The 'name' argument must be a string : preferably the name of the relative function.")
         if not isinstance(value, int) or value <= 0:
@@ -35,6 +75,16 @@ class Valid:
 
     @staticmethod
     def _positive_int_out(value, name: str = None):
+        """Validate that the given value is a non-negative integer (zero or greater).
+
+        Args:
+            value: The value to check.
+            name: The name of the argument (for error messages).
+
+        Raises:
+            ValueError: If the value is not a non-negative integer.
+            ValidateError: If the name is None.
+        """
         if name == None:
             raise ValidateError("The 'name' argument must be a string : preferably the name of the relative function.")
         if not isinstance(value, int) or value < 0:
@@ -43,6 +93,16 @@ class Valid:
 
     @staticmethod
     def _negative_int_in(value, name: str = None):
+        """Validate that the given value is a negative integer (less than zero).
+
+        Args:
+            value: The value to check.
+            name: The name of the argument (for error messages).
+
+        Raises:
+            ValueError: If the value is not a negative integer.
+            ValidateError: If the name is None.
+        """
         if name == None:
             raise ValidateError("The 'name' argument must be a string : preferably the name of the relative function.")
         if not isinstance(value, int) or value >= 0:
@@ -50,6 +110,16 @@ class Valid:
 
     @staticmethod
     def _negative_int_out(value, name: str = None):
+        """Validate that the given value is a non-positive integer (zero or less).
+
+        Args:
+            value: The value to check.
+            name: The name of the argument (for error messages).
+
+        Raises:
+            ValueError: If the value is not a non-positive integer.
+            ValidateError: If the name is None.
+        """
         if name == None:
             raise ValidateError("The 'name' argument must be a string : preferably the name of the relative function.")
         if not isinstance(value, int) or value > 0:
