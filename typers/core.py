@@ -231,6 +231,16 @@ class Valid:
     # ------------------- Lists -------------------- #
     @staticmethod
     def _list(value, name: str = None):
+        """Validate that the given value is a list.
+
+        Args:
+            value: The value to check.
+            name: The name of the argument (for error messages).
+
+        Raises:
+            ValueError: If the value is not a list.
+            ValidateError: If the name is None.
+        """
         if name is None:
             raise ValidateError("The 'name' argument must be a string.")
         if not isinstance(value, list):
@@ -238,6 +248,16 @@ class Valid:
 
     @staticmethod
     def _list_of_strings(value, name: str = None):
+        """Validate that the given value is a list of strings.
+
+        Args:
+            value: The value to check.
+            name: The name of the argument (for error messages).
+
+        Raises:
+            ValueError: If the value is not a list of strings.
+            ValidateError: If the name is None.
+        """
         if name is None:
             raise ValidateError("The 'name' argument must be a string.")
         if not isinstance(value, list) or not all(isinstance(item, str) for item in value):
@@ -245,6 +265,16 @@ class Valid:
     
     @staticmethod
     def _list_of_ints(value, name: str = None):
+        """Validate that the given value is a list of integers.
+
+        Args:
+            value: The value to check.
+            name: The name of the argument (for error messages).
+
+        Raises:
+            ValueError: If the value is not a list of integers.
+            ValidateError: If the name is None.
+        """
         if name is None:
             raise ValidateError("The 'name' argument must be a string.")
         if not isinstance(value, list) or not all(isinstance(item, int) for item in value):
@@ -252,6 +282,16 @@ class Valid:
 
     @staticmethod
     def _list_of_floats(value, name: str = None):
+        """Validate that the given value is a list of floats.
+
+        Args:
+            value: The value to check.
+            name: The name of the argument (for error messages).
+
+        Raises:
+            ValueError: If the value is not a list of floats.
+            ValidateError: If the name is None.
+        """
         if name is None:
             raise ValidateError("The 'name' argument must be a string.")
         if not isinstance(value, list) or not all(isinstance(item, float) for item in value):
@@ -259,6 +299,16 @@ class Valid:
 
     @staticmethod
     def _list_of_bools(value, name: str = None):
+        """Validate that the given value is a list of booleans.
+
+        Args:
+            value: The value to check.
+            name: The name of the argument (for error messages).
+
+        Raises:
+            ValueError: If the value is not a list of booleans.
+            ValidateError: If the name is None.
+        """
         if name is None:
             raise ValidateError("The 'name' argument must be a string.")
         if not isinstance(value, list) or not all(isinstance(item, bool) for item in value):
@@ -267,6 +317,18 @@ class Valid:
     # ------------------ Ranges -------------------- #
     @staticmethod
     def _in_range(value, min_val, max_val, name: str = None):
+        """Validate that the value is within a specified range [min_val, max_val].
+
+        Args:
+            value: The value to check.
+            min_val: The minimum allowed value.
+            max_val: The maximum allowed value.
+            name: The name of the argument (for error messages).
+
+        Raises:
+            ValueError: If the value is not within the range.
+            ValidateError: If the name is None or if min_val is greater than or equal to max_val.
+        """
         if min_val >= max_val:
             raise ValidateError("The 'min_val' argument cannot be bigger or equal to the 'max_val' argument.")
         if name is None:
@@ -277,6 +339,16 @@ class Valid:
     # ------------------ Tuples -------------------- #
     @staticmethod
     def _tuple(value, name: str = None):
+        """Validate that the given value is a tuple.
+
+        Args:
+            value: The value to check.
+            name: The name of the argument (for error messages).
+
+        Raises:
+            ValueError: If the value is not a tuple.
+            ValidateError: If the name is None.
+        """
         if name is None:
             raise ValidateError("The 'name' argument must be a string.")
         if not isinstance(value, tuple):
@@ -284,6 +356,16 @@ class Valid:
 
     @staticmethod
     def _tuple_of_strings(value, name: str = None):
+        """Validate that the given value is a tuple of strings.
+
+        Args:
+            value: The value to check.
+            name: The name of the argument (for error messages).
+
+        Raises:
+            ValueError: If the value is not a tuple of strings.
+            ValidateError: If the name is None.
+        """
         if name is None:
             raise ValidateError("The 'name' argument must be a string.")
         if not isinstance(value, tuple) or not all(isinstance(item, str) for item in value):
