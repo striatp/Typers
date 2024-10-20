@@ -293,3 +293,11 @@ class Valid:
             UUID(value)
         except ValueError:
             raise ValueError(f"The '{name}' argument must be a valid UUID.")
+
+    # Custom validation
+    @staticmethod
+    def _custom(value, validation_func, name: str = None):
+        if name is None:
+            raise ValidateError("The 'name' argument must be a string.")
+        if not validation_func(value):
+            raise ValueError(f"The '{name}' argument failed custom validation.")
