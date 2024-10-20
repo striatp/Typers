@@ -5,7 +5,7 @@ A utility package for performing various validation checks on values in Python. 
 ## Features
 
 - Validate non-null values
-- Check for types: strings, integers, floats, and booleans
+- Check for types: strings, integers, floats, booleans, lists, tuples, sets, custom types, ranges, dictionaries, length, enums, optionals, empty.. And more.
 - Validate collections: lists, tuples, sets, and dictionaries
 - Check ranges and lengths
 - Support for custom validations using user-defined functions
