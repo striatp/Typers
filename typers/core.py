@@ -493,6 +493,16 @@ class Valid:
 
     @staticmethod
     def _set_of_bools(value, name: str = None):
+        """Validate that the given value is a set of booleans.
+
+        Args:
+            value: The value to check.
+            name: The name of the argument (for error messages).
+
+        Raises:
+            ValueError: If the value is not a set of booleans.
+            ValidateError: If the name is None.
+        """
         if name is None:
             raise ValidateError("The 'name' argument must be a string.")
         if not isinstance(value, set) or not all(isinstance(item, bool) for item in value):
@@ -501,6 +511,16 @@ class Valid:
     # ------------------ Dictionaries -------------- #
     @staticmethod
     def _dict(value, name: str = None):
+        """Validate that the given value is a dictionary.
+
+        Args:
+            value: The value to check.
+            name: The name of the argument (for error messages).
+
+        Raises:
+            ValueError: If the value is not a dictionary.
+            ValidateError: If the name is None.
+        """
         if name is None:
             raise ValidateError("The 'name' argument must be a string.")
         if not isinstance(value, dict):
@@ -508,6 +528,16 @@ class Valid:
 
     @staticmethod
     def _dict_of_strings(value, name: str = None):
+        """Validate that the given value is a dictionary with string keys and values.
+
+        Args:
+            value: The value to check.
+            name: The name of the argument (for error messages).
+
+        Raises:
+            ValueError: If the value is not a dictionary of string keys and values.
+            ValidateError: If the name is None.
+        """
         if name is None:
             raise ValidateError("The 'name' argument must be a string.")
         if not isinstance(value, dict) or not all(isinstance(k, str) and isinstance(v, str) for k, v in value.items()):
@@ -516,6 +546,17 @@ class Valid:
     # ------------------ Length -------------------- #
     @staticmethod
     def _length(value, expected_length, name: str = None):
+        """Validate that the value has a specific length.
+
+        Args:
+            value: The value to check.
+            expected_length: The expected length.
+            name: The name of the argument (for error messages).
+
+        Raises:
+            ValueError: If the value does not have the expected length.
+            ValidateError: If the name is None or expected_length is negative.
+        """
         if excepted_length < 0:
             raise ValidateError("The 'excepted_length' argument must be a positive integer.")
         if name is None:
@@ -526,6 +567,17 @@ class Valid:
     # ------------------ Custom types -------------- #
     @staticmethod
     def _type(value, expected_type, name: str = None):
+        """Validate that the value matches the expected type.
+
+        Args:
+            value: The value to check.
+            expected_type: The expected type.
+            name: The name of the argument (for error messages).
+
+        Raises:
+            ValueError: If the value does not match the expected type.
+            ValidateError: If the name is None.
+        """
         if name is None:
             raise ValidateError("The 'name' argument must be a string.")
         if not isinstance(value, expected_type):
@@ -534,6 +586,17 @@ class Valid:
     # ------------------ Optionals ----------------- #
     @staticmethod
     def _optional(value, expected_type, name: str = None):
+        """Validate that the value is either None or matches the expected type.
+
+        Args:
+            value: The value to check.
+            expected_type: The expected type if value is not None.
+            name: The name of the argument (for error messages).
+
+        Raises:
+            ValueError: If the value is neither None nor the expected type.
+            ValidateError: If the name is None.
+        """
         if name is None:
             raise ValidateError("The 'name' argument must be a string.")
         if value is not None and not isinstance(value, expected_type):
@@ -542,6 +605,17 @@ class Valid:
     # ------------------ Enums --------------------- #
     @staticmethod
     def _enum(value, options, name: str = None):
+        """Validate that the value is one of the specified options.
+
+        Args:
+            value: The value to check.
+            options: A list of valid options.
+            name: The name of the argument (for error messages).
+
+        Raises:
+            ValueError: If the value is not one of the options.
+            ValidateError: If the name is None or options are invalid.
+        """
         if not isinstance(options, list) or len(options) == 0:
             raise ValidateError("The 'options' argument must be a list.")
         if name is None:
@@ -552,6 +626,16 @@ class Valid:
     # ------------------ Non-empty strings --------- #
     @staticmethod
     def _non_empty_string(value, name: str = None):
+        """Validate that the value is a non-empty string.
+
+        Args:
+            value: The value to check.
+            name: The name of the argument (for error messages).
+
+        Raises:
+            ValueError: If the value is not a non-empty string.
+            ValidateError: If the name is None.
+        """
         if name is None:
             raise ValidateError("The 'name' argument must be a string.")
         if not isinstance(value, str) or not value.strip():
@@ -560,6 +644,16 @@ class Valid:
     # ------------------ Non-empty lists ----------- #
     @staticmethod
     def _non_empty_list(value, name: str = None):
+        """Validate that the value is a non-empty list.
+
+        Args:
+            value: The value to check.
+            name: The name of the argument (for error messages).
+
+        Raises:
+            ValueError: If the value is not a non-empty list.
+            ValidateError: If the name is None.
+        """
         if name is None:
             raise ValidateError("The 'name' argument must be a string.")
         if not isinstance(value, list) or len(value) == 0:
@@ -568,6 +662,17 @@ class Valid:
     # ------------------ Custom -------------------- #
     @staticmethod
     def _custom(value, validation_func, name: str = None):
+        """Perform custom validation using a provided function.
+
+        Args:
+            value: The value to check.
+            validation_func: A function that takes the value and returns True if valid, False otherwise.
+            name: The name of the argument (for error messages).
+
+        Raises:
+            ValueError: If the custom validation fails.
+            ValidateError: If the name is None.
+        """
         if name is None:
             raise ValidateError("The 'name' argument must be a string.")
         if not validation_func(value):
