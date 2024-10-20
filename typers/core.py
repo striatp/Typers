@@ -127,6 +127,16 @@ class Valid:
     # Floats
     @staticmethod
     def _float(value, name: str = None):
+        """Validate that the given value is a float.
+
+        Args:
+            value: The value to check.
+            name: The name of the argument (for error messages).
+
+        Raises:
+            ValueError: If the value is not a float.
+            ValidateError: If the name is None.
+        """
         if name is None:
             raise ValidateError("The 'name' argument must be a string.")
         if not isinstance(value, float):
@@ -134,6 +144,16 @@ class Valid:
 
     @staticmethod
     def _positive_float_in(value, name: str = None):
+        """Validate that the given value is a positive float (greater than zero).
+
+        Args:
+            value: The value to check.
+            name: The name of the argument (for error messages).
+
+        Raises:
+            ValueError: If the value is not a positive float.
+            ValidateError: If the name is None.
+        """
         if name is None:
             raise ValidateError("The 'name' argument must be a string.")
         if not isinstance(value, float) or value <= 0:
@@ -141,6 +161,16 @@ class Valid:
 
     @staticmethod
     def _positive_float_out(value, name: str = None):
+        """Validate that the given value is a non-negative float (zero or greater).
+
+        Args:
+            value: The value to check.
+            name: The name of the argument (for error messages).
+
+        Raises:
+            ValueError: If the value is not a non-negative float.
+            ValidateError: If the name is None.
+        """
         if name is None:
             raise ValidateError("The 'name' argument must be a string.")
         if not isinstance(value, float) or value < 0:
@@ -148,6 +178,16 @@ class Valid:
 
     @staticmethod
     def _negative_float_in(value, name: str = None):
+        """Validate that the given value is a negative float (less than zero).
+
+        Args:
+            value: The value to check.
+            name: The name of the argument (for error messages).
+
+        Raises:
+            ValueError: If the value is not a negative float.
+            ValidateError: If the name is None.
+        """
         if name is None:
             raise ValidateError("The 'name' argument must be a string.")
         if not isinstance(value, float) or value >= 0:
@@ -155,14 +195,34 @@ class Valid:
 
     @staticmethod
     def _negative_float_out(value, name: str = None):
+        """Validate that the given value is a non-positive float (zero or less).
+
+        Args:
+            value: The value to check.
+            name: The name of the argument (for error messages).
+
+        Raises:
+            ValueError: If the value is not a non-positive float.
+            ValidateError: If the name is None.
+        """
         if name is None:
             raise ValidateError("The 'name' argument must be a string.")
         if not isinstance(value, float) or value > 0:
             raise ValueError(f"The '{name}' argument must be a negative float excluding 0.")
 
-    # Booleans
+    # ------------------ Booleans ------------------
     @staticmethod
     def _boolean(value, name: str = None):
+        """Validate that the given value is a boolean.
+
+        Args:
+            value: The value to check.
+            name: The name of the argument (for error messages).
+
+        Raises:
+            ValueError: If the value is not a boolean.
+            ValidateError: If the name is None.
+        """
         if name is None:
             raise ValidateError("The 'name' argument must be a string.")
         if not isinstance(value, bool):
