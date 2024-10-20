@@ -8,6 +8,7 @@ class Valid:
         if not isinstance(value, str):
             raise ValueError(f"The '{name}' argument must be a string.")
 
+    # Integers
     @staticmethod
     def _integer(value, name: str = None):
         if name == None:
@@ -43,6 +44,8 @@ class Valid:
             raise ValidateError("The 'name' argument must be a string : preferably the name of the relative function.")
         if not isinstance(value, int) or value > 0:
             raise ValueError(f"The '{name}' argument must be a negative integer excluding 0.")
+
+    # Floats
     @staticmethod
     def _float(value, name: str = None):
         if name is None:
@@ -51,15 +54,29 @@ class Valid:
             raise ValueError(f"The '{name}' argument must be a float.")
 
     @staticmethod
-    def _positive_float(value, name: str = None):
+    def _positive_float_in(value, name: str = None):
         if name is None:
             raise ValidateError("The 'name' argument must be a string.")
         if not isinstance(value, float) or value <= 0:
             raise ValueError(f"The '{name}' argument must be a positive float.")
 
     @staticmethod
-    def _negative_float(value, name: str = None):
+    def _positive_float_out(value, name: str = None):
+        if name is None:
+            raise ValidateError("The 'name' argument must be a string.")
+        if not isinstance(value, float) or value < 0:
+            raise ValueError(f"The '{name}' argument must be a positive float excluding 0.")
+
+    @staticmethod
+    def _negative_float_in(value, name: str = None):
         if name is None:
             raise ValidateError("The 'name' argument must be a string.")
         if not isinstance(value, float) or value >= 0:
             raise ValueError(f"The '{name}' argument must be a negative float.")
+
+    @staticmethod
+    def _negative_float_out(value, name: str = None):
+        if name is None:
+            raise ValidateError("The 'name' argument must be a string.")
+        if not isinstance(value, float) or value > 0:
+            raise ValueError(f"The '{name}' argument must be a negative float excluding 0.")
