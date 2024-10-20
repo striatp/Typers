@@ -143,3 +143,39 @@ class Valid:
             raise ValidateError("The 'name' argument must be a string.")
         if not isinstance(value, (int, float)) or not (min_val <= value <= max_val):
             raise ValueError(f"The '{name}' argument must be between {min_val} and {max_val}.")
+
+    # Tuples
+    @staticmethod
+    def _tuple(value, name: str = None):
+        if name is None:
+            raise ValidateError("The 'name' argument must be a string.")
+        if not isinstance(value, tuple):
+            raise ValueError(f"The '{name}' argument must be a tuple.")
+
+    @staticmethod
+    def _tuple_of_strings(value, name: str = None):
+        if name is None:
+            raise ValidateError("The 'name' argument must be a string.")
+        if not isinstance(value, tuple) or not all(isinstance(item, str) for item in value):
+            raise ValueError(f"The '{name}' argument must be a tuple of strings.")
+
+    @staticmethod
+    def _tuple_of_ints(value, name: str = None):
+        if name is None:
+            raise ValidateError("The 'name' argument must be a string.")
+        if not isinstance(value, tuple) or not all(isinstance(item, int) for item in value):
+            raise ValueError(f"The '{name}' argument must be a tuple of integers.")
+
+    @staticmethod
+    def _tuple_of_floats(value, name: str = None):
+        if name is None:
+            raise ValidateError("The 'name' argument must be a string.")
+        if not isinstance(value, tuple) or not all(isinstance(item, float) for item in value):
+            raise ValueError(f"The '{name}' argument must be a tuple of floats.")
+
+    @staticmethod
+    def _tuple_of_bools(value, name: str = None):
+        if name is None:
+            raise ValidateError("The 'name' argument must be a string.")
+        if not isinstance(value, tuple) or not all(isinstance(item, bool) for item in value):
+            raise ValueError(f"The '{name}' argument must be a tuple of booleans.")
