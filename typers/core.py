@@ -1,6 +1,21 @@
 from .Exceptions.validate_error import ValidateError
 
 class Valid:
+    """A utility class for performing various validation checks on values.
+
+    The `Valid` class provides static methods to validate data types, ranges, lengths, and custom validations.
+    It is useful for ensuring that function arguments or values passed to a program are of the expected type or structure.
+    
+    The methods raise a `ValueError` if validation fails, and some methods may raise a `ValidateError`
+    if there are issues with the parameters (e.g., a missing or invalid 'name' argument).
+    
+    Validation types include:
+    - Non-null checks
+    - Strings, integers, floats, and booleans
+    - Lists, tuples, sets, and dictionaries
+    - Ranges and length validation
+    - Custom validations using user-defined functions
+    """
     # ------------------ Not None ------------------ #
     @staticmethod
     def _not_none(value, name: str = None):
