@@ -1,3 +1,4 @@
+import uuid
 from .Exceptions.validate_error import ValidateError
 
 class Valid:
@@ -282,3 +283,13 @@ class Valid:
             raise ValidateError("The 'name' argument must be a string.")
         if not isinstance(value, list) or len(value) == 0:
             raise ValueError(f"The '{name}' argument must be a non-empty list.")
+
+    # UUID
+    @staticmethod
+    def _uuid(value, name: str = None):
+        if name is None:
+            raise ValidateError("The 'name' argument must be a string.")
+        try:
+            uuid.UUID(value)
+        except ValueError:
+            raise ValueError(f"The '{name}' argument must be a valid UUID.")
