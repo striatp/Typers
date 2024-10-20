@@ -179,3 +179,57 @@ class Valid:
             raise ValidateError("The 'name' argument must be a string.")
         if not isinstance(value, tuple) or not all(isinstance(item, bool) for item in value):
             raise ValueError(f"The '{name}' argument must be a tuple of booleans.")
+
+    # Sets
+    @staticmethod
+    def _set(value, name: str = None):
+        if name is None:
+            raise ValidateError("The 'name' argument must be a string.")
+        if not isinstance(value, set):
+            raise ValueError(f"The '{name}' argument must be a set.")
+    
+    @staticmethod
+    def _set_of_strings(value, name: str = None):
+        if name is None:
+            raise ValidateError("The 'name' argument must be a string.")
+        if not isinstance(value, set) or not all(isinstance(item, string) for item in value):
+            raise ValueError(f"The '{name}' argument must be a set of strings.")
+
+    @staticmethod
+    def _set_of_ints(value, name: str = None):
+        if name is None:
+            raise ValidateError("The 'name' argument must be a string.")
+        if not isinstance(value, set) or not all(isinstance(item, int) for item in value):
+            raise ValueError(f"The '{name}' argument must be a set of integers.")
+
+    @staticmethod
+    def _set_of_floats(value, name: str = None):
+        if name is None:
+            raise ValidateError("The 'name' argument must be a string.")
+        if not isinstance(value, set) or not all(isinstance(item, float) for item in value):
+            raise ValueError(f"The '{name}' argument must be a set of floats.")
+
+    @staticmethod
+    def _set_of_bools(value, name: str = None):
+        if name is None:
+            raise ValidateError("The 'name' argument must be a string.")
+        if not isinstance(value, set) or not all(isinstance(item, bool) for item in value):
+            raise ValueError(f"The '{name}' argument must be a set of booleans.")
+
+    # Length
+    @staticmethod
+    def _length(value, expected_length, name: str = None):
+        if excepted_length < 0:
+            raise ValidateError("The 'excepted_length' argument must be a positive integer.")
+        if name is None:
+            raise ValidateError("The 'name' argument must be a string.")
+        if not hasattr(value, '__len__') or len(value) != expected_length:
+            raise ValueError(f"The '{name}' argument must have a length of {expected_length}.")
+
+    # Types (custom)
+    @staticmethod
+    def _type(value, expected_type, name: str = None):
+        if name is None:
+            raise ValidateError("The 'name' argument must be a string.")
+        if not isinstance(value, expected_type):
+            raise ValueError(f"The '{name}' argument must be of type {expected_type.__name__}.")
