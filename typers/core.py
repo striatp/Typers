@@ -27,11 +27,19 @@ class Valid:
         if name == None:
             raise ValidateError("The 'name' argument must be a string : preferably the name of the relative function.")
         if not isinstance(value, int) or value < 0:
-            raise ValueError(f"The '{name}' argument must be a positive integer.")
+            raise ValueError(f"The '{name}' argument must be a positive integer excluding 0.")
 
 
     @staticmethod
-    def _negative_int(value, name: str = None):
+    def _negative_int_in(value, name: str = None):
         if name == None:
             raise ValidateError("The 'name' argument must be a string : preferably the name of the relative function.")
-        if not isinstance(value, int) or value >= 0
+        if not isinstance(value, int) or value >= 0:
+            raise ValueError(f"The '{name}' argument must be a negative integer.")
+
+    @staticmethod
+    def _negative_int_out(value, name: str = None):
+        if name == None:
+            raise ValidateError("The 'name' argument must be a string : preferably the name of the relative function.")
+        if not isinstance(value, int) or value > 0:
+            raise ValueError(f"The '{name}' argument must be a negative integer excluding 0.")
