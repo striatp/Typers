@@ -1,7 +1,7 @@
 from .Exceptions.validate_error import ValidateError
 
 class Valid:
-    # Not none
+    # ------------------ Not None ------------------ #
     @staticmethod
     def _not_none(value, name: str = None):
         """Validate that the given value is not None.
@@ -19,7 +19,7 @@ class Valid:
         if value is None:
             raise ValueError(f"The '{name}' argument cannot be None.")
 
-    # String
+    # ------------------ Strings ------------------- #
     @staticmethod
     def _string(value, name: str = None):
         """Validate that the given value is a string.
@@ -37,7 +37,7 @@ class Valid:
         if not isinstance(value, str):
             raise ValueError(f"The '{name}' argument must be a string.")
 
-    # Integers
+    # ------------------ Integers ------------------ #
     @staticmethod
     def _integer(value, name: str = None):
         """Validate that the given value is an integer.
@@ -124,7 +124,7 @@ class Valid:
         if not isinstance(value, int) or value > 0:
             raise ValueError(f"The '{name}' argument must be a negative integer excluding 0.")
 
-    # Floats
+    # ------------------ Floats --------------+----- #
     @staticmethod
     def _float(value, name: str = None):
         """Validate that the given value is a float.
@@ -210,7 +210,7 @@ class Valid:
         if not isinstance(value, float) or value > 0:
             raise ValueError(f"The '{name}' argument must be a negative float excluding 0.")
 
-    # ------------------ Booleans ------------------
+    # ------------------ Booleans ------------------ #
     @staticmethod
     def _boolean(value, name: str = None):
         """Validate that the given value is a boolean.
@@ -228,7 +228,7 @@ class Valid:
         if not isinstance(value, bool):
             raise ValueError(f"The '{name}' argument must be a boolean.")
 
-    # Lists
+    # ------------------- Lists -------------------- #
     @staticmethod
     def _list(value, name: str = None):
         if name is None:
@@ -264,7 +264,7 @@ class Valid:
         if not isinstance(value, list) or not all(isinstance(item, bool) for item in value):
             raise ValueError(f"The '{name}' argument must be a list of booleans.")
     
-    # Ranges
+    # ------------------ Ranges -------------------- #
     @staticmethod
     def _in_range(value, min_val, max_val, name: str = None):
         if min_val >= max_val:
@@ -274,7 +274,7 @@ class Valid:
         if not isinstance(value, (int, float)) or not (min_val <= value <= max_val):
             raise ValueError(f"The '{name}' argument must be between {min_val} and {max_val}.")
 
-    # Tuples
+    # ------------------ Tuples -------------------- #
     @staticmethod
     def _tuple(value, name: str = None):
         if name is None:
@@ -310,7 +310,7 @@ class Valid:
         if not isinstance(value, tuple) or not all(isinstance(item, bool) for item in value):
             raise ValueError(f"The '{name}' argument must be a tuple of booleans.")
 
-    # Sets
+    # ------------------ Sets ---------------------- #
     @staticmethod
     def _set(value, name: str = None):
         if name is None:
@@ -346,7 +346,7 @@ class Valid:
         if not isinstance(value, set) or not all(isinstance(item, bool) for item in value):
             raise ValueError(f"The '{name}' argument must be a set of booleans.")
 
-    # Dictionary
+    # ------------------ Dictionaries -------------- #
     @staticmethod
     def _dict(value, name: str = None):
         if name is None:
@@ -361,7 +361,7 @@ class Valid:
         if not isinstance(value, dict) or not all(isinstance(k, str) and isinstance(v, str) for k, v in value.items()):
             raise ValueError(f"The '{name}' argument must be a dictionary of string keys and values.")
   
-    # Length
+    # ------------------ Length -------------------- #
     @staticmethod
     def _length(value, expected_length, name: str = None):
         if excepted_length < 0:
@@ -371,7 +371,7 @@ class Valid:
         if not hasattr(value, '__len__') or len(value) != expected_length:
             raise ValueError(f"The '{name}' argument must have a length of {expected_length}.")
 
-    # Types (custom)
+    # ------------------ Custom types -------------- #
     @staticmethod
     def _type(value, expected_type, name: str = None):
         if name is None:
@@ -379,7 +379,7 @@ class Valid:
         if not isinstance(value, expected_type):
             raise ValueError(f"The '{name}' argument must be of type {expected_type.__name__}.")
 
-    # Optional
+    # ------------------ Optionals ----------------- #
     @staticmethod
     def _optional(value, expected_type, name: str = None):
         if name is None:
@@ -387,7 +387,7 @@ class Valid:
         if value is not None and not isinstance(value, expected_type):
             raise ValueError(f"The '{name}' argument must be None or of type {expected_type.__name__}.")
 
-    # Enum
+    # ------------------ Enums --------------------- #
     @staticmethod
     def _enum(value, options, name: str = None):
         if not isinstance(options, list) or len(options) == 0:
@@ -397,7 +397,7 @@ class Valid:
         if value not in options:
             raise ValueError(f"The '{name}' argument must be one of {options}.")
 
-    # Non-empty string
+    # ------------------ Non-empty strings --------- #
     @staticmethod
     def _non_empty_string(value, name: str = None):
         if name is None:
@@ -405,7 +405,7 @@ class Valid:
         if not isinstance(value, str) or not value.strip():
             raise ValueError(f"The '{name}' argument must be a non-empty string.")
 
-    # Non-empty list
+    # ------------------ Non-empty lists ----------- #
     @staticmethod
     def _non_empty_list(value, name: str = None):
         if name is None:
@@ -413,7 +413,7 @@ class Valid:
         if not isinstance(value, list) or len(value) == 0:
             raise ValueError(f"The '{name}' argument must be a non-empty list.")
 
-    # Custom validation
+    # ------------------ Custom -------------------- #
     @staticmethod
     def _custom(value, validation_func, name: str = None):
         if name is None:
