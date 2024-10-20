@@ -216,6 +216,21 @@ class Valid:
         if not isinstance(value, set) or not all(isinstance(item, bool) for item in value):
             raise ValueError(f"The '{name}' argument must be a set of booleans.")
 
+    # Dictionary
+    @staticmethod
+    def _dict(value, name: str = None):
+        if name is None:
+            raise ValidateError("The 'name' argument must be a string.")
+        if not isinstance(value, dict):
+            raise ValueError(f"The '{name}' argument must be a dictionary.")
+
+    @staticmethod
+    def _dict_of_strings(value, name: str = None):
+        if name is None:
+            raise ValidateError("The 'name' argument must be a string.")
+        if not isinstance(value, dict) or not all(isinstance(k, str) and isinstance(v, str) for k, v in value.items()):
+            raise ValueError(f"The '{name}' argument must be a dictionary of string keys and values.")
+  
     # Length
     @staticmethod
     def _length(value, expected_length, name: str = None):
@@ -233,3 +248,37 @@ class Valid:
             raise ValidateError("The 'name' argument must be a string.")
         if not isinstance(value, expected_type):
             raise ValueError(f"The '{name}' argument must be of type {expected_type.__name__}.")
+
+    # Optional
+    @staticmethod
+    def _optional(value, expected_type, name: str = None):
+        if name is None:
+            raise ValidateError("The 'name' argument must be a string.")
+        if value is not None and not isinstance(value, expected_type):
+            raise ValueError(f"The '{name}' argument must be None or of type {expected_type.__name__}.")
+
+    # Enum
+    @staticmethod
+    def _enum(value, options, name: str = None):
+        if not isinstance(options, list) or len(options) == 0:
+            raise ValidateError("The 'options' argument must be a list.")
+        if name is None:
+            raise ValidateError("The 'name' argument must be a string.")
+        if value not in options:
+            raise ValueError(f"The '{name}' argument must be one of {options}.")
+
+    # Non-empty string
+    @staticmethod
+    def _non_empty_string(value, name: str = None):
+        if name is None:
+            raise ValidateError("The 'name' argument must be a string.")
+        if not isinstance(value, str) or not value.strip():
+            raise ValueError(f"The '{name}' argument must be a non-empty string.")
+
+    # Non-empty list
+    @staticmethod
+    def _non_empty_list(value, name: str = None):
+        if name is None:
+            raise ValidateError("The 'name' argument must be a string.")
+        if not isinstance(value, list) or len(value) == 0:
+            raise ValueError(f"The '{name}' argument must be a non-empty list.")
