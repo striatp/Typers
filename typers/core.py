@@ -1,4 +1,4 @@
-import uuid
+from uuid import UUID
 from .Exceptions.validate_error import ValidateError
 
 class Valid:
@@ -290,6 +290,6 @@ class Valid:
         if name is None:
             raise ValidateError("The 'name' argument must be a string.")
         try:
-            uuid.UUID(value)
+            UUID(value)
         except ValueError:
             raise ValueError(f"The '{name}' argument must be a valid UUID.")
