@@ -1,10 +1,37 @@
 from .Exceptions.validate_error import ValidateError
 
-class Validate:
-
+class Valid:
     @staticmethod
     def _string(value, name: str = None):
         if name == None:
             raise ValidateError("The 'name' argument must be a string : preferably the name of the relative function.")
         if not isinstance(value, str):
-            raise ValueError(f"The '{name}' argument must be a string.)
+            raise ValueError(f"The '{name}' argument must be a string.")
+
+    @staticmethod
+    def _integer(value, name: str = None):
+        if name == None:
+            raise ValidateError("The 'name' argument must be a string : preferably the name of the relative function.")
+        if not isinstance(value, int):
+            raise ValueError(f"The '{name}' argument must be an integer.")
+
+    @staticmethod
+    def _positive_int_in(value, name: str = None):
+        if name == None:
+            raise ValidateError("The 'name' argument must be a string : preferably the name of the relative function.")
+        if not isinstance(value, int) or value <= 0:
+            raise ValueError(f"The '{name}' argument must be a positive integer.")
+
+    @staticmethod
+    def _positive_int_out(value, name: str = None):
+        if name == None:
+            raise ValidateError("The 'name' argument must be a string : preferably the name of the relative function.")
+        if not isinstance(value, int) or value < 0:
+            raise ValueError(f"The '{name}' argument must be a positive integer.")
+
+
+    @staticmethod
+    def _negative_int(value, name: str = None):
+        if name == None:
+            raise ValidateError("The 'name' argument must be a string : preferably the name of the relative function.")
+        if not isinstance(value, int) or value >= 0
