@@ -572,7 +572,7 @@ class Valid:
             ValueError: If the value does not have the expected length.
             ValidateError: If the name is None or expected_length is negative.
         """
-        if excepted_length < 0:
+        if expected_length < 0:
             raise ValidateError("The 'excepted_length' argument must be a positive integer.")
         if name is None:
             raise ValidateError("The 'name' argument must be a string.")
