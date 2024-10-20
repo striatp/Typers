@@ -373,6 +373,16 @@ class Valid:
 
     @staticmethod
     def _tuple_of_ints(value, name: str = None):
+        """Validate that the given value is a tuple of integers.
+
+        Args:
+            value: The value to check.
+            name: The name of the argument (for error messages).
+
+        Raises:
+            ValueError: If the value is not a tuple of integers.
+            ValidateError: If the name is None.
+        """
         if name is None:
             raise ValidateError("The 'name' argument must be a string.")
         if not isinstance(value, tuple) or not all(isinstance(item, int) for item in value):
@@ -380,6 +390,16 @@ class Valid:
 
     @staticmethod
     def _tuple_of_floats(value, name: str = None):
+        """Validate that the given value is a tuple of floats.
+
+        Args:
+            value: The value to check.
+            name: The name of the argument (for error messages).
+
+        Raises:
+            ValueError: If the value is not a tuple of floats.
+            ValidateError: If the name is None.
+        """
         if name is None:
             raise ValidateError("The 'name' argument must be a string.")
         if not isinstance(value, tuple) or not all(isinstance(item, float) for item in value):
@@ -387,6 +407,16 @@ class Valid:
 
     @staticmethod
     def _tuple_of_bools(value, name: str = None):
+        """Validate that the given value is a tuple of booleans.
+
+        Args:
+            value: The value to check.
+            name: The name of the argument (for error messages).
+
+        Raises:
+            ValueError: If the value is not a tuple of booleans.
+            ValidateError: If the name is None.
+        """
         if name is None:
             raise ValidateError("The 'name' argument must be a string.")
         if not isinstance(value, tuple) or not all(isinstance(item, bool) for item in value):
@@ -395,6 +425,16 @@ class Valid:
     # ------------------ Sets ---------------------- #
     @staticmethod
     def _set(value, name: str = None):
+        """Validate that the given value is a set.
+
+        Args:
+            value: The value to check.
+            name: The name of the argument (for error messages).
+
+        Raises:
+            ValueError: If the value is not a set.
+            ValidateError: If the name is None.
+        """
         if name is None:
             raise ValidateError("The 'name' argument must be a string.")
         if not isinstance(value, set):
@@ -402,6 +442,16 @@ class Valid:
     
     @staticmethod
     def _set_of_strings(value, name: str = None):
+        """Validate that the given value is a set of strings.
+
+        Args:
+            value: The value to check.
+            name: The name of the argument (for error messages).
+
+        Raises:
+            ValueError: If the value is not a set of strings.
+            ValidateError: If the name is None.
+        """
         if name is None:
             raise ValidateError("The 'name' argument must be a string.")
         if not isinstance(value, set) or not all(isinstance(item, string) for item in value):
@@ -409,6 +459,16 @@ class Valid:
 
     @staticmethod
     def _set_of_ints(value, name: str = None):
+        """Validate that the given value is a set of integers.
+
+        Args:
+            value: The value to check.
+            name: The name of the argument (for error messages).
+
+        Raises:
+            ValueError: If the value is not a set of integers.
+            ValidateError: If the name is None.
+        """
         if name is None:
             raise ValidateError("The 'name' argument must be a string.")
         if not isinstance(value, set) or not all(isinstance(item, int) for item in value):
@@ -416,6 +476,16 @@ class Valid:
 
     @staticmethod
     def _set_of_floats(value, name: str = None):
+        """Validate that the given value is a set of floats.
+
+        Args:
+            value: The value to check.
+            name: The name of the argument (for error messages).
+
+        Raises:
+            ValueError: If the value is not a set of floats.
+            ValidateError: If the name is None.
+        """
         if name is None:
             raise ValidateError("The 'name' argument must be a string.")
         if not isinstance(value, set) or not all(isinstance(item, float) for item in value):
