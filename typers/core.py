@@ -1,14 +1,14 @@
-from .Exceptions.validate_error import ValidateError
+from .exceptions import ValidationError
 
 class Valid:
     """A utility class for performing various validation checks on values.
 
     The `Valid` class provides static methods to validate data types, ranges, lengths, and custom validations.
     It is useful for ensuring that function arguments or values passed to a program are of the expected type or structure.
-    
+
     The methods raise a `ValueError` if validation fails, and some methods may raise a `ValidateError`
     if there are issues with the parameters (e.g., a missing or invalid 'name' argument).
-    
+
     Validation types include:
     - Non-null checks
     - Strings, integers, floats, and booleans
@@ -27,10 +27,10 @@ class Valid:
 
         Raises:
             ValueError: If the value is None.
-            ValidateError: If the name is None.
+            ValidationError: If the name is None.
         """
         if name is None:
-            raise ValidateError("The 'name' argument must be a string.")
+            raise ValidationError("The 'name' argument must be a string.")
         if value is None:
             raise ValueError(f"The '{name}' argument cannot be None.")
 
@@ -45,10 +45,10 @@ class Valid:
 
         Raises:
             ValueError: If the value is not a string.
-            ValidateError: If the name is None.
+            ValidationError: If the name is None.
         """
         if name == None:
-            raise ValidateError("The 'name' argument must be a string : preferably the name of the relative function.")
+            raise ValidationError("The 'name' argument must be a string : preferably the name of the relative function.")
         if not isinstance(value, str):
             raise ValueError(f"The '{name}' argument must be a string.")
 
@@ -63,10 +63,10 @@ class Valid:
 
         Raises:
             ValueError: If the value is not an integer.
-            ValidateError: If the name is None.
+            ValidationError: If the name is None.
         """
         if name == None:
-            raise ValidateError("The 'name' argument must be a string : preferably the name of the relative function.")
+            raise ValidationError("The 'name' argument must be a string : preferably the name of the relative function.")
         if not isinstance(value, int):
             raise ValueError(f"The '{name}' argument must be an integer.")
 
@@ -80,10 +80,10 @@ class Valid:
 
         Raises:
             ValueError: If the value is not a positive integer.
-            ValidateError: If the name is None.
+            ValidationError: If the name is None.
         """
         if name == None:
-            raise ValidateError("The 'name' argument must be a string : preferably the name of the relative function.")
+            raise ValidationError("The 'name' argument must be a string : preferably the name of the relative function.")
         if not isinstance(value, int) or value <= 0:
             raise ValueError(f"The '{name}' argument must be a positive integer.")
 
@@ -97,10 +97,10 @@ class Valid:
 
         Raises:
             ValueError: If the value is not a non-negative integer.
-            ValidateError: If the name is None.
+            ValidationError: If the name is None.
         """
         if name == None:
-            raise ValidateError("The 'name' argument must be a string : preferably the name of the relative function.")
+            raise ValidationError("The 'name' argument must be a string : preferably the name of the relative function.")
         if not isinstance(value, int) or value < 0:
             raise ValueError(f"The '{name}' argument must be a positive integer excluding 0.")
 
@@ -115,10 +115,10 @@ class Valid:
 
         Raises:
             ValueError: If the value is not a negative integer.
-            ValidateError: If the name is None.
+            ValidationError: If the name is None.
         """
         if name == None:
-            raise ValidateError("The 'name' argument must be a string : preferably the name of the relative function.")
+            raise ValidationError("The 'name' argument must be a string : preferably the name of the relative function.")
         if not isinstance(value, int) or value >= 0:
             raise ValueError(f"The '{name}' argument must be a negative integer.")
 
@@ -132,10 +132,10 @@ class Valid:
 
         Raises:
             ValueError: If the value is not a non-positive integer.
-            ValidateError: If the name is None.
+            ValidationError: If the name is None.
         """
         if name == None:
-            raise ValidateError("The 'name' argument must be a string : preferably the name of the relative function.")
+            raise ValidationError("The 'name' argument must be a string : preferably the name of the relative function.")
         if not isinstance(value, int) or value > 0:
             raise ValueError(f"The '{name}' argument must be a negative integer excluding 0.")
 
@@ -150,10 +150,10 @@ class Valid:
 
         Raises:
             ValueError: If the value is not a float.
-            ValidateError: If the name is None.
+            ValidationError: If the name is None.
         """
         if name is None:
-            raise ValidateError("The 'name' argument must be a string.")
+            raise ValidationError("The 'name' argument must be a string.")
         if not isinstance(value, float):
             raise ValueError(f"The '{name}' argument must be a float.")
 
@@ -167,10 +167,10 @@ class Valid:
 
         Raises:
             ValueError: If the value is not a positive float.
-            ValidateError: If the name is None.
+            ValidationError: If the name is None.
         """
         if name is None:
-            raise ValidateError("The 'name' argument must be a string.")
+            raise ValidationError("The 'name' argument must be a string.")
         if not isinstance(value, float) or value <= 0:
             raise ValueError(f"The '{name}' argument must be a positive float.")
 
@@ -184,10 +184,10 @@ class Valid:
 
         Raises:
             ValueError: If the value is not a non-negative float.
-            ValidateError: If the name is None.
+            ValidationError: If the name is None.
         """
         if name is None:
-            raise ValidateError("The 'name' argument must be a string.")
+            raise ValidationError("The 'name' argument must be a string.")
         if not isinstance(value, float) or value < 0:
             raise ValueError(f"The '{name}' argument must be a positive float excluding 0.")
 
@@ -201,10 +201,10 @@ class Valid:
 
         Raises:
             ValueError: If the value is not a negative float.
-            ValidateError: If the name is None.
+            ValidationError: If the name is None.
         """
         if name is None:
-            raise ValidateError("The 'name' argument must be a string.")
+            raise ValidationError("The 'name' argument must be a string.")
         if not isinstance(value, float) or value >= 0:
             raise ValueError(f"The '{name}' argument must be a negative float.")
 
@@ -218,10 +218,10 @@ class Valid:
 
         Raises:
             ValueError: If the value is not a non-positive float.
-            ValidateError: If the name is None.
+            ValidationError: If the name is None.
         """
         if name is None:
-            raise ValidateError("The 'name' argument must be a string.")
+            raise ValidationError("The 'name' argument must be a string.")
         if not isinstance(value, float) or value > 0:
             raise ValueError(f"The '{name}' argument must be a negative float excluding 0.")
 
@@ -236,10 +236,10 @@ class Valid:
 
         Raises:
             ValueError: If the value is not a boolean.
-            ValidateError: If the name is None.
+            ValidationError: If the name is None.
         """
         if name is None:
-            raise ValidateError("The 'name' argument must be a string.")
+            raise ValidationError("The 'name' argument must be a string.")
         if not isinstance(value, bool):
             raise ValueError(f"The '{name}' argument must be a boolean.")
 
@@ -254,10 +254,10 @@ class Valid:
 
         Raises:
             ValueError: If the value is not a list.
-            ValidateError: If the name is None.
+            ValidationError: If the name is None.
         """
         if name is None:
-            raise ValidateError("The 'name' argument must be a string.")
+            raise ValidationError("The 'name' argument must be a string.")
         if not isinstance(value, list):
             raise ValueError(f"The '{name}' argument must be a list.")
 
@@ -271,13 +271,13 @@ class Valid:
 
         Raises:
             ValueError: If the value is not a list of strings.
-            ValidateError: If the name is None.
+            ValidationError: If the name is None.
         """
         if name is None:
-            raise ValidateError("The 'name' argument must be a string.")
+            raise ValidationError("The 'name' argument must be a string.")
         if not isinstance(value, list) or not all(isinstance(item, str) for item in value):
             raise ValueError(f"The '{name}' argument must be a list of strings.")
-    
+
     @staticmethod
     def _list_of_ints(value, name: str = None):
         """Validate that the given value is a list of integers.
@@ -288,10 +288,10 @@ class Valid:
 
         Raises:
             ValueError: If the value is not a list of integers.
-            ValidateError: If the name is None.
+            ValidationError: If the name is None.
         """
         if name is None:
-            raise ValidateError("The 'name' argument must be a string.")
+            raise ValidationError("The 'name' argument must be a string.")
         if not isinstance(value, list) or not all(isinstance(item, int) for item in value):
             raise ValueError(f"The '{name}' argument must be a list of integers.")
 
@@ -305,10 +305,10 @@ class Valid:
 
         Raises:
             ValueError: If the value is not a list of floats.
-            ValidateError: If the name is None.
+            ValidationError: If the name is None.
         """
         if name is None:
-            raise ValidateError("The 'name' argument must be a string.")
+            raise ValidationError("The 'name' argument must be a string.")
         if not isinstance(value, list) or not all(isinstance(item, float) for item in value):
             raise ValueError(f"The '{name}' argument must be a list of floats.")
 
@@ -322,13 +322,13 @@ class Valid:
 
         Raises:
             ValueError: If the value is not a list of booleans.
-            ValidateError: If the name is None.
+            ValidationError: If the name is None.
         """
         if name is None:
-            raise ValidateError("The 'name' argument must be a string.")
+            raise ValidationError("The 'name' argument must be a string.")
         if not isinstance(value, list) or not all(isinstance(item, bool) for item in value):
             raise ValueError(f"The '{name}' argument must be a list of booleans.")
-    
+
     # ------------------ Ranges -------------------- #
     @staticmethod
     def _in_range(value, min_val, max_val, name: str = None):
@@ -342,12 +342,12 @@ class Valid:
 
         Raises:
             ValueError: If the value is not within the range.
-            ValidateError: If the name is None or if min_val is greater than or equal to max_val.
+            ValidationError: If the name is None or if min_val is greater than or equal to max_val.
         """
         if min_val >= max_val:
-            raise ValidateError("The 'min_val' argument cannot be bigger or equal to the 'max_val' argument.")
+            raise ValidationError("The 'min_val' argument cannot be bigger or equal to the 'max_val' argument.")
         if name is None:
-            raise ValidateError("The 'name' argument must be a string.")
+            raise ValidationError("The 'name' argument must be a string.")
         if not isinstance(value, (int, float)) or not (min_val <= value <= max_val):
             raise ValueError(f"The '{name}' argument must be between {min_val} and {max_val}.")
 
@@ -362,10 +362,10 @@ class Valid:
 
         Raises:
             ValueError: If the value is not a tuple.
-            ValidateError: If the name is None.
+            ValidationError: If the name is None.
         """
         if name is None:
-            raise ValidateError("The 'name' argument must be a string.")
+            raise ValidationError("The 'name' argument must be a string.")
         if not isinstance(value, tuple):
             raise ValueError(f"The '{name}' argument must be a tuple.")
 
@@ -379,10 +379,10 @@ class Valid:
 
         Raises:
             ValueError: If the value is not a tuple of strings.
-            ValidateError: If the name is None.
+            ValidationError: If the name is None.
         """
         if name is None:
-            raise ValidateError("The 'name' argument must be a string.")
+            raise ValidationError("The 'name' argument must be a string.")
         if not isinstance(value, tuple) or not all(isinstance(item, str) for item in value):
             raise ValueError(f"The '{name}' argument must be a tuple of strings.")
 
@@ -396,10 +396,10 @@ class Valid:
 
         Raises:
             ValueError: If the value is not a tuple of integers.
-            ValidateError: If the name is None.
+            ValidationError: If the name is None.
         """
         if name is None:
-            raise ValidateError("The 'name' argument must be a string.")
+            raise ValidationError("The 'name' argument must be a string.")
         if not isinstance(value, tuple) or not all(isinstance(item, int) for item in value):
             raise ValueError(f"The '{name}' argument must be a tuple of integers.")
 
@@ -413,10 +413,10 @@ class Valid:
 
         Raises:
             ValueError: If the value is not a tuple of floats.
-            ValidateError: If the name is None.
+            ValidationError: If the name is None.
         """
         if name is None:
-            raise ValidateError("The 'name' argument must be a string.")
+            raise ValidationError("The 'name' argument must be a string.")
         if not isinstance(value, tuple) or not all(isinstance(item, float) for item in value):
             raise ValueError(f"The '{name}' argument must be a tuple of floats.")
 
@@ -430,10 +430,10 @@ class Valid:
 
         Raises:
             ValueError: If the value is not a tuple of booleans.
-            ValidateError: If the name is None.
+            ValidationError: If the name is None.
         """
         if name is None:
-            raise ValidateError("The 'name' argument must be a string.")
+            raise ValidationError("The 'name' argument must be a string.")
         if not isinstance(value, tuple) or not all(isinstance(item, bool) for item in value):
             raise ValueError(f"The '{name}' argument must be a tuple of booleans.")
 
@@ -448,13 +448,13 @@ class Valid:
 
         Raises:
             ValueError: If the value is not a set.
-            ValidateError: If the name is None.
+            ValidationError: If the name is None.
         """
         if name is None:
-            raise ValidateError("The 'name' argument must be a string.")
+            raise ValidationError("The 'name' argument must be a string.")
         if not isinstance(value, set):
             raise ValueError(f"The '{name}' argument must be a set.")
-    
+
     @staticmethod
     def _set_of_strings(value, name: str = None):
         """Validate that the given value is a set of strings.
@@ -465,10 +465,10 @@ class Valid:
 
         Raises:
             ValueError: If the value is not a set of strings.
-            ValidateError: If the name is None.
+            ValidationError: If the name is None.
         """
         if name is None:
-            raise ValidateError("The 'name' argument must be a string.")
+            raise ValidationError("The 'name' argument must be a string.")
         if not isinstance(value, set) or not all(isinstance(item, string) for item in value):
             raise ValueError(f"The '{name}' argument must be a set of strings.")
 
@@ -482,10 +482,10 @@ class Valid:
 
         Raises:
             ValueError: If the value is not a set of integers.
-            ValidateError: If the name is None.
+            ValidationError: If the name is None.
         """
         if name is None:
-            raise ValidateError("The 'name' argument must be a string.")
+            raise ValidationError("The 'name' argument must be a string.")
         if not isinstance(value, set) or not all(isinstance(item, int) for item in value):
             raise ValueError(f"The '{name}' argument must be a set of integers.")
 
@@ -499,10 +499,10 @@ class Valid:
 
         Raises:
             ValueError: If the value is not a set of floats.
-            ValidateError: If the name is None.
+            ValidationError: If the name is None.
         """
         if name is None:
-            raise ValidateError("The 'name' argument must be a string.")
+            raise ValidationError("The 'name' argument must be a string.")
         if not isinstance(value, set) or not all(isinstance(item, float) for item in value):
             raise ValueError(f"The '{name}' argument must be a set of floats.")
 
@@ -516,10 +516,10 @@ class Valid:
 
         Raises:
             ValueError: If the value is not a set of booleans.
-            ValidateError: If the name is None.
+            ValidationError: If the name is None.
         """
         if name is None:
-            raise ValidateError("The 'name' argument must be a string.")
+            raise ValidationError("The 'name' argument must be a string.")
         if not isinstance(value, set) or not all(isinstance(item, bool) for item in value):
             raise ValueError(f"The '{name}' argument must be a set of booleans.")
 
@@ -534,10 +534,10 @@ class Valid:
 
         Raises:
             ValueError: If the value is not a dictionary.
-            ValidateError: If the name is None.
+            ValidationError: If the name is None.
         """
         if name is None:
-            raise ValidateError("The 'name' argument must be a string.")
+            raise ValidationError("The 'name' argument must be a string.")
         if not isinstance(value, dict):
             raise ValueError(f"The '{name}' argument must be a dictionary.")
 
@@ -551,13 +551,13 @@ class Valid:
 
         Raises:
             ValueError: If the value is not a dictionary of string keys and values.
-            ValidateError: If the name is None.
+            ValidationError: If the name is None.
         """
         if name is None:
-            raise ValidateError("The 'name' argument must be a string.")
+            raise ValidationError("The 'name' argument must be a string.")
         if not isinstance(value, dict) or not all(isinstance(k, str) and isinstance(v, str) for k, v in value.items()):
             raise ValueError(f"The '{name}' argument must be a dictionary of string keys and values.")
-  
+
     # ------------------ Length -------------------- #
     @staticmethod
     def _length(value, expected_length, name: str = None):
@@ -570,12 +570,12 @@ class Valid:
 
         Raises:
             ValueError: If the value does not have the expected length.
-            ValidateError: If the name is None or expected_length is negative.
+            ValidationError: If the name is None or expected_length is negative.
         """
         if expected_length < 0:
-            raise ValidateError("The 'excepted_length' argument must be a positive integer.")
+            raise ValidationError("The 'excepted_length' argument must be a positive integer.")
         if name is None:
-            raise ValidateError("The 'name' argument must be a string.")
+            raise ValidationError("The 'name' argument must be a string.")
         if not hasattr(value, '__len__') or len(value) != expected_length:
             raise ValueError(f"The '{name}' argument must have a length of {expected_length}.")
 
@@ -591,10 +591,10 @@ class Valid:
 
         Raises:
             ValueError: If the value does not match the expected type.
-            ValidateError: If the name is None.
+            ValidationError: If the name is None.
         """
         if name is None:
-            raise ValidateError("The 'name' argument must be a string.")
+            raise ValidationError("The 'name' argument must be a string.")
         if not isinstance(value, expected_type):
             raise ValueError(f"The '{name}' argument must be of type {expected_type.__name__}.")
 
@@ -610,10 +610,10 @@ class Valid:
 
         Raises:
             ValueError: If the value is neither None nor the expected type.
-            ValidateError: If the name is None.
+            ValidationError: If the name is None.
         """
         if name is None:
-            raise ValidateError("The 'name' argument must be a string.")
+            raise ValidationError("The 'name' argument must be a string.")
         if value is not None and not isinstance(value, expected_type):
             raise ValueError(f"The '{name}' argument must be None or of type {expected_type.__name__}.")
 
@@ -629,12 +629,12 @@ class Valid:
 
         Raises:
             ValueError: If the value is not one of the options.
-            ValidateError: If the name is None or options are invalid.
+            ValidationError: If the name is None or options are invalid.
         """
         if not isinstance(options, list) or len(options) == 0:
-            raise ValidateError("The 'options' argument must be a list.")
+            raise ValidationError("The 'options' argument must be a list.")
         if name is None:
-            raise ValidateError("The 'name' argument must be a string.")
+            raise ValidationError("The 'name' argument must be a string.")
         if value not in options:
             raise ValueError(f"The '{name}' argument must be one of {options}.")
 
@@ -649,10 +649,10 @@ class Valid:
 
         Raises:
             ValueError: If the value is not a non-empty string.
-            ValidateError: If the name is None.
+            ValidationError: If the name is None.
         """
         if name is None:
-            raise ValidateError("The 'name' argument must be a string.")
+            raise ValidationError("The 'name' argument must be a string.")
         if not isinstance(value, str) or not value.strip():
             raise ValueError(f"The '{name}' argument must be a non-empty string.")
 
@@ -667,10 +667,10 @@ class Valid:
 
         Raises:
             ValueError: If the value is not a non-empty list.
-            ValidateError: If the name is None.
+            ValidationError: If the name is None.
         """
         if name is None:
-            raise ValidateError("The 'name' argument must be a string.")
+            raise ValidationError("The 'name' argument must be a string.")
         if not isinstance(value, list) or len(value) == 0:
             raise ValueError(f"The '{name}' argument must be a non-empty list.")
 
@@ -686,9 +686,9 @@ class Valid:
 
         Raises:
             ValueError: If the custom validation fails.
-            ValidateError: If the name is None.
+            ValidationError: If the name is None.
         """
         if name is None:
-            raise ValidateError("The 'name' argument must be a string.")
+            raise ValidationError("The 'name' argument must be a string.")
         if not validation_func(value):
             raise ValueError(f"The '{name}' argument failed custom validation.")
